@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="action_report_asistencia_pdf" model="ir.actions.report">
+       <field name="name">Resumen de Asistencia</field>
+       <field name="model">servicio.asistencia</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">asisya_servicios_asistencia.reporte_asistencia_template</field>
+       <field name="report_file">asisya_servicios_asistencia.reporte_asistencia_template</field>
+       <field name="print_report_name">'Asistencia - %s' % (object.cliente_id.name)</field>
+       <field name="binding_model_id" ref="model_servicio_asistencia"/>
+       <field name="binding_type">report</field>
+   </record>
+</odoo>

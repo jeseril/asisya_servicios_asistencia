@@ -1,0 +1,55 @@
+<odoo>
+    <template id="reporte_asistencia_template">
+        <t t-call="web.html_container">
+            <!-- Usa el layout estándar con logo y encabezado -->
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+
+                        <h2 style="text-align: center; font-size: 22px; margin-bottom: 20px; text-transform: uppercase;">
+                            Resumen de Asistencia
+                        </h2>
+
+                        <table style="width: 100%; font-size: 13px; margin-bottom: 20px;">
+                            <tr>
+                                <td style="width: 30%; font-weight: bold;">Cliente:</td>
+                                <td><t t-esc="doc.cliente_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Tipo de Asistencia:</td>
+                                <td><t t-esc="doc.tipo_asistencia.title()"/></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Ubicación:</td>
+                                <td><t t-esc="doc.ubicacion"/></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Fecha de Solicitud:</td>
+                                <td>
+                                    <t t-esc="doc.fecha_solicitud.strftime('%d/%m/%Y %H:%M') if doc.fecha_solicitud else ''"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; vertical-align: top;">Descripción:</td>
+                                <td><t t-esc="doc.descripcion or '-'"/></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Costo Estimado:</td>
+                                <td>
+                                    <t t-esc="'$ {:,.2f}'.format(doc.costo_estimado or 0.0)"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <hr style="margin: 40px 0;"/>
+
+                        <div style="text-align: center; font-size: 10px; color: gray;">
+                            Documento generado automáticamente por el sistema.<br/>
+                            Fecha de emisión: <t t-esc="doc.fecha_solicitud.strftime('%d/%m/%Y %H:%M') if doc.fecha_solicitud else ''"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
