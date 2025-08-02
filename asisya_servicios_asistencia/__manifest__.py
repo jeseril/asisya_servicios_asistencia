@@ -16,12 +16,13 @@
     'author': 'Jesus Rincon',
     'website': 'https://www.linkedin.com/in/jesussebastian/',
     'icon': 'asisya_servicios_asistencia/static/description/icon.png',
-    'depends': ['base', 'web', 'mail'],
+    'depends': ['base', 'web', 'mail','crm'],
     'data': [
         'security/servicio_asistencia_groups.xml',
         'security/ir.model.access.csv',
         'views/servicio_asistencia_views.xml',
         'views/menus.xml',
+        'views/crm_lead_views.xml',
         'reports/report.xml',
         'reports/report_template.xml',
         'data/email_template.xml'

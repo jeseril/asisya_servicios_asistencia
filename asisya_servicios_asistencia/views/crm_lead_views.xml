@@ -1,0 +1,22 @@
+<odoo>
+  <record id="view_crm_lead_form_asistencias" model="ir.ui.view">
+    <field name="name">crm.lead.form.asistencias</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+      <!-- Dentro del notebook principal -->
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Servicios de Asistencias" name="asistencias_tab">
+          <field name="asistencia_ids" nolabel="1">
+            <tree string="Asistencias del Contacto" editable="bottom">
+              <field name="tipo_asistencia"/>
+              <field name="fecha_solicitud"/>
+              <field name="estado"/>
+              <field name="ubicacion"/>
+            </tree>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
