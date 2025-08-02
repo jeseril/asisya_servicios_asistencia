@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <record id="email_template_asistencia" model="mail.template">
+      <field name="name">Notificación de Asistencia</field>
+      <field name="model_id" ref="asisya_servicios_asistencia.model_servicio_asistencia"/>
+      <field name="subject">✅ Tu solicitud de asistencia ha sido registrada</field>
+      <field name="email_from">${(user.email_formatted or '')}</field>
+      <field name="email_to">${object.cliente_id.email}</field>
+      <field name="body_html" type="html">
+        <div style="background:#F0F0F0;color:#515166;padding:10px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
+          <table style="width:600px;margin:0 auto;background:white;border:1px solid #e1e1e1;border-collapse:collapse;">
+            <tr style="background:#F56766;color:#FFF;">
+              <td style="padding:20px;text-align:center;font-size:18px;">
+                Notificación de Asistencia
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:20px;">
+                <p style="margin:0 0 16px;">
+                  Hola <strong><t t-out="object.cliente_id.name or 'Cliente'"/></strong>,
+                </p>
+                <p style="margin:0 0 16px;">
+                  Tu solicitud de asistencia ha sido
+                  <span style="color:#2E86C1;font-weight:bold;">
+                    registrada correctamente
+                  </span>:
+                </p>
+                <ul style="list-style:disc;padding-left:20px;margin:0 0 16px;">
+                  <li>
+                    <strong>Tipo:</strong>
+                    <t t-esc="object.tipo_asistencia.title()"/>
+                  </li>
+                  <li>
+                    <strong>Ubicación:</strong>
+                    <t t-out="object.ubicacion or ''"/>
+                  </li>
+                  <li>
+                    <strong>Fecha de Solicitud:</strong>
+                    <t t-esc="object.fecha_solicitud.strftime('%d/%m/%Y %H:%M')"/>
+                  </li>
+                </ul>
+                <p style="margin:0 0 16px;">
+                  En breve nos pondremos en contacto contigo para informarte del estado de tu solicitud.
+                </p>
+                <p style="margin:0;">
+                  ¡Gracias por confiar en nosotros!
+                </p>
+              </td>
+            </tr>
+            <tr style="background:#F5F5F5;color:#888;">
+              <td style="padding:10px;text-align:center;font-size:12px;">
+                &amp;copy; <t t-esc="time.strftime('%Y')"/>
+                <t t-esc="user.company_id.name"/>
+                Todos los derechos reservados.
+              </td>
+            </tr>
+          </table>
+        </div>
+      </field>
+    </record>
+  </data>
+</odoo>
