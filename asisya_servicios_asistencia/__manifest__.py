@@ -7,6 +7,7 @@
         Módulo para gestionar servicios de asistencia como soporte vial, médico y del hogar.
         Funcionalidades:
         - Registro y seguimiento de asistencias por estado.
+        - Integración con APIs simuladas (TRM y Tiempo de Atención).
         - Vista Kanban para gestión visual por estado.
         - Vista calendario por fecha de solicitud.
         - Reporte PDF detallado.
@@ -21,6 +22,9 @@
         'security/ir.model.access.csv',
         'views/servicio_asistencia_views.xml',
         'views/menus.xml',
+        'reports/report.xml',
+        'reports/report_template.xml',
+        'data/email_template.xml'
     ],
     'installable': True,
     'application': True,
