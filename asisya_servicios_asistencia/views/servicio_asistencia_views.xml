@@ -14,6 +14,15 @@
                             <div><field name="fecha_solicitud"/></div>
                         </div>
                     </t>
+                    <!-- Mini-form para creación rápida -->
+                    <t t-name="kanban-box-new">
+                        <div class="o_kanban_record_new">
+                            <field name="tipo_asistencia"/>
+                            <field name="cliente_id"/>
+                            <field name="ubicacion"/>
+                            <field name="fecha_solicitud"/>
+                        </div>
+                    </t>
                 </templates>
             </kanban>
         </field>
@@ -41,6 +50,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="action_generar_pdf" type="object" string="Generar PDF" class="btn-primary"/>
                     <field name="estado" widget="statusbar" statusbar_visible="solicitado,en_proceso,finalizado"/>
                 </header>
                 <sheet>
@@ -54,6 +64,12 @@
                         <field name="costo_estimado"/>
                     </group>
                 </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+
             </form>
         </field>
     </record>

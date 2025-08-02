@@ -54,14 +54,6 @@ class ServicioAsistencia(models.Model):
             )
             # 1) Enviar el correo al cliente
             template.send_mail(record.id, force_send=True)
-            # 2) Renderizar cuerpo y asunto con la plantilla
-            body = template._render_template(
-                template.body_html, template.model, [record.id]
-            )
-            # 3) Publicar en el chatter
-            record.message_post(
-                body=body,
-            )
         return record
 
     def write(self, vals):
