@@ -1,0 +1,11 @@
+<odoo>
+    <record id="group_asistencia_interno" model="res.groups">
+        <field name="name">Interno Asistencia</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+
+    <record id="group_asistencia_gerente" model="res.groups">
+        <field name="name">Gerente Asistencia</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+</odoo>

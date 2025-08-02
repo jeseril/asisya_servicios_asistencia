@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Menú raíz -->
+        <menuitem id="menu_servicio_asistencia_root"
+                  name="Servicios de Asistencia"
+                  sequence="10"
+                  web_icon="asisya_servicios_asistencia,static/description/icon.png"
+                  />
+
+        <!-- Submenú: Gestión de Asistencias -->
+        <menuitem id="menu_servicio_asistencia"
+                  name="Servicios de Asistencias"
+                  parent="menu_servicio_asistencia_root"
+                  action="action_servicio_asistencia"
+                  sequence="1"/>
+    </data>
+</odoo>
