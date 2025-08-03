@@ -8,10 +8,17 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <strong><field name="tipo_asistencia"/></strong><br/>
+                            <strong>
+                                <field name="tipo_asistencia"/>
+                            </strong>
+                            <br/>
                             <field name="cliente_id"/>
-                            <div><field name="ubicacion"/></div>
-                            <div><field name="fecha_solicitud"/></div>
+                            <div>
+                                <field name="ubicacion"/>
+                            </div>
+                            <div>
+                                <field name="fecha_solicitud"/>
+                            </div>
                         </div>
                     </t>
                     <!-- Mini-form para creación rápida -->
@@ -79,7 +86,7 @@
         <field name="name">servicio.asistencia.calendar</field>
         <field name="model">servicio.asistencia</field>
         <field name="arch" type="xml">
-            <calendar string="Calendario de Asistencia" date_start="fecha_solicitud" color="tipo_asistencia" />
+            <calendar string="Calendario de Asistencia" date_start="fecha_solicitud" color="tipo_asistencia"/>
         </field>
     </record>
 
@@ -89,4 +96,35 @@
         <field name="res_model">servicio.asistencia</field>
         <field name="view_mode">kanban,tree,form,calendar</field>
     </record>
+
+    <record id="view_servicio_asistencia_form_inherit" model="ir.ui.view">
+        <field name="name">servicio.asistencia.form.integration</field>
+        <field name="model">servicio.asistencia</field>
+        <field name="inherit_id" ref="asisya_servicios_asistencia.view_servicio_asistencia_form"/>
+        <field name="arch" type="xml">
+            <!-- Botón en la cabecera -->
+            <xpath expr="//header" position="inside">
+                <button name="action_consultar_api"
+                        type="object"
+                        string="Actualizar APIs"
+                        class="btn-primary"/>
+            </xpath>
+            <!-- Pestaña de resultados -->
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Integración API">
+                        <field name="integracion_ids" nolabel="1">
+                            <tree>
+                                <field name="trm"/>
+                                <field name="tiempo_atencion"/>
+                                <field name="state"/>
+                                <field name="last_update"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
